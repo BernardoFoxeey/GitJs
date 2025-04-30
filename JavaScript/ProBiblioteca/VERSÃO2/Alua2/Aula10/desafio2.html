@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classificação de Notas</title>
+</head>
+<body>
+    Nota (0-10): <input type="number" id="Notas" min="0" max="10" value="2"><br><br>
+    <button onclick="revelarNota()">Classificar Nota</button><br><br>
+    <div id="resultadoNotas"></div><br><br>
+
+    <script>
+        function revelarNota() {
+            let Notas = parseInt(document.getElementById("Notas").value);
+            let resultado;
+
+            switch (true) {
+                case (Notas >= 9 && Notas <= 10):
+                    resultado = "A";
+                    break;
+                case (Notas >= 7 && Notas < 9):
+                    resultado = "B";
+                    break;
+                case (Notas >= 5 && Notas < 7):
+                    resultado = "C";
+                    break;
+                case (Notas >= 3 && Notas < 5):
+                    resultado = "D";
+                    break;
+                case (Notas >= 0 && Notas < 3):
+                    resultado = "F";
+                    break;
+                default:
+                    resultado = "Nota inválida!";
+            }
+
+            document.getElementById("resultadoNotas").innerHTML = `Classificação: ${resultado}`;
+        }
+    </script>
+</body>
+</html>

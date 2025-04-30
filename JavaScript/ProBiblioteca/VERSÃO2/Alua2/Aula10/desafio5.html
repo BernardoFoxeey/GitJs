@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Consulta de Carro</title>
+</head>
+<body>
+  <h1>Informações do Carro e Serviços</h1>
+
+  <label for="modelo">Digite o modelo (Gol, Civic, Corolla):</label>
+  <input type="text" id="modelo" oninput="consultarCarro()">
+
+  <h2>Informações do Carro:</h2>
+  <p id="infoCarro"></p>
+
+  <h2>Relatório de Serviços:</h2>
+  <p id="relatorioServicos"></p>
+
+  <script>
+    function consultarCarro() {
+      const modelo = document.getElementById('modelo').value.trim().toLowerCase();
+      let info = '';
+      let servicos = '';
+      let valorServicos = 0;
+
+      switch (modelo) {
+        case 'gol':
+          info = 'Modelo: Gol<br>Preço: R$ 45.000<br>Ano: 2020<br>Combustível: Flex';
+          servicos = 'Troca de óleo (R$ 150), Alinhamento (R$ 100)';
+          valorServicos = 150 + 100;
+          break;
+        case 'civic':
+          info = 'Modelo: Civic<br>Preço: R$ 90.000<br>Ano: 2022<br>Combustível: Gasolina';
+          servicos = 'Revisão completa (R$ 600), Balanceamento (R$ 120)';
+          valorServicos = 600 + 120;
+          break;
+        case 'corolla':
+          info = 'Modelo: Corolla<br>Preço: R$ 100.000<br>Ano: 2023<br>Combustível: Híbrido';
+          servicos = 'Inspeção eletrônica (R$ 350), Troca de filtro (R$ 80)';
+          valorServicos = 350 + 80;
+          break;
+        default:
+          info = 'Modelo não encontrado. Tente: Gol, Civic ou Corolla.';
+          servicos = '';
+          valorServicos = 0;
+      }
+
+      document.getElementById('infoCarro').innerHTML = info;
+      document.getElementById('relatorioServicos').innerHTML = 
+        servicos ? `${servicos}<br><strong>Total: R$ ${valorServicos}</strong>` : '';
+    }
+  </script>
+</body>
+</html>

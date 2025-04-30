@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="biblioteca.css">
+    <title>Biblioteca</title>
+</head>
+<body>
+
+    <div class="container">
+        <h1>BIBLIOTECA SENAI - EDUCAÇÃO PARA A VIDA</h1>
+
+        <div class="menu">
+            <button onclick="mostrarSecao('cadastro')">
+                Cadastrar Livro
+            </button>
+            <button onclick="mostrarSecao('consulta')">
+                Consultar Livros
+            </button>
+            <button onclick="mostrarSecao('alterar')">
+                Alterar Livros
+            </button>
+        </div>
+    </div>
+
+    <div>
+        <!-- Seção de cadastro -->
+        <div id="cadastro" class="container">
+            <h2>Cadastrar Livro</h2>
+
+            <div class="form-group">
+                <label for="titulo-livro">Título:</label>
+                <input type="text" id="titulo-livro" placeholder="Digite o título do livro">          
+            </div>
+            <div class="form-group">
+                <label for="autor-livro">Autor:</label>
+                <input type="text" id="autor-livro" placeholder="Digite o autor do livro">          
+            </div>
+            <div class="form-group">
+                <label for="ano-livro">Ano:</label>
+                <input type="number" id="ano-livro" placeholder="Digite o ano de publicação">          
+            </div>
+            <button onclick="adicionarLivro()">Adicionar Livro</button>
+        </div>
+    </div>
+
+    <!-- Seção de consulta -->
+    <div id="consulta" class="hidden">
+        <h2>Consultar Livros</h2>
+        <input type="text" id="busca" placeholder="Buscar por título" oninput="buscarLivro()">
+        <table>
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Autor</th>
+                    <th>Ano</th>
+                </tr>
+            </thead>
+            <tbody id="lista-livros">
+                <!-- Livros serão exibidos aqui -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function mostrarSecao(secaoId) {
+            // Esconde todas as seções
+            const secoes = document.querySelectorAll('.container, .hidden');
+            secoes.forEach(secao => secao.classList.add('hidden'));
+
+            // Mostra a seção selecionada
+            const secaoSelecionada = document.getElementById(secaoId);
+            if (secaoSelecionada) {
+                secaoSelecionada.classList.remove('hidden');
+            }
+        }
+
+        function adicionarLivro() {
+            // Implementação da lógica para adicionar livro
+            console.log("Livro adicionado!");
+        }
+
+        function buscarLivro() {
+            // Implementação da lógica para buscar livro
+            console.log("Buscando livro...");
+        }
+    </script>
+</body>
+</html>

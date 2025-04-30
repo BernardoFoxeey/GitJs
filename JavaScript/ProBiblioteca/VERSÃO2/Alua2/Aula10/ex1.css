@@ -1,0 +1,43 @@
+.semaforo {
+    width: 100px;
+    height: 300px;
+    background-color: black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.luz {
+    width: 70px;
+    height: 70px;
+    background-color: gray;
+    border-radius: 50%;
+    transition: background-color 0.5s ease;
+}
+
+.luz.Vermelha {
+    background-color: red;
+}
+.luz.Amarela {
+    background-color: yellow;
+}
+
+.luz.Verde {
+    background-color: green;
+}
+.luz.Laranja {
+    background-color: orange;
+}
+
+.luz.Roxo {
+    background-color: rgb(196, 29, 196);
+}
+
+button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+}

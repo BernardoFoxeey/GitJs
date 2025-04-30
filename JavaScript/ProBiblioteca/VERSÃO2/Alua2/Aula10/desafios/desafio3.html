@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Áreas</title>
+</head>
+<body>
+    <h1>Calculadora de Áreas</h1>
+    <label for="forma">Escolha a forma geométrica:</label>
+    <select id="forma" onchange="atualizarCampos()">
+        <option value="retangulo">Retângulo</option>
+        <option value="circulo">Círculo</option>
+        <option value="triangulo">Triângulo</option>
+        <option value="quadrado">Quadrado</option>
+    </select><br><br>
+
+    <div id="inputs">
+        <label for="tamanho">Base/Lado/Diâmetro:</label>
+        <input type="number" id="tamanho" min="1" value="2"><br><br>
+        <label for="altura" id="alturaLabel">Altura:</label>
+        <input type="number" id="altura" min="1" value="2"><br><br>
+    </div>
+
+    <button onclick="calcularArea()">Calcular Área</button><br><br>
+    <div id="resultadoArea"></div><br><br>
+
+    <script>
+        function atualizarCampos() {
+            const forma = document.getElementById("forma").value;
+            const alturaLabel = document.getElementById("alturaLabel");
+            const alturaInput = document.getElementById("altura");
+
+            if (forma === "circulo" || forma === "quadrado") {
+                alturaLabel.style.display = "none";
+                alturaInput.style.display = "none";
+            } else {
+                alturaLabel.style.display = "inline";
+                alturaInput.style.display = "inline";
+            }
+        }
+
+        function calcularArea() {
+            const forma = document.getElementById("forma").value;
+            const tamanho = parseFloat(document.getElementById("tamanho").value);
+            const altura = parseFloat(document.getElementById("altura").value);
+            let resultado;
+
+            switch (forma) {
+                case "retangulo":
+                    if (tamanho > 0 && altura > 0) {
+                        resultado = tamanho * altura;
+                    } else {
+                        resultado = "Valores inválidos!";
+                    }
+                    break;
+                case "circulo":
+                    if (tamanho > 0) {
+                        const raio = tamanho / 2;
+                        resultado = Math.PI * Math.pow(raio, 2);
+                    } else {
+                        resultado = "Valores inválidos!";
+                    }
+                    break;
+                case "triangulo":
+                    if (tamanho > 0 && altura > 0) {
+                        resultado = (tamanho * altura) / 2;
+                    } else {
+                        resultado = "Valores inválidos!";
+                    }
+                    break;
+                case "quadrado":
+                    if (tamanho > 0) {
+                        resultado = Math.pow(tamanho, 2);
+                    } else {
+                        resultado = "Valores inválidos!";
+                    }
+                    break;
+                default:
+                    resultado = "Forma inválida!";
+            }
+
+            document.getElementById("resultadoArea").innerText = `Área: ${resultado}`;
+        }
+    </script>
+</body>
+</html>
